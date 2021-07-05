@@ -1,0 +1,51 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Add Forms</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Add Workflow</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<a class="btn btn-info" href="#" th:href="@{/workflows/all}"> Back to All Workflows </a>
+			<form action="#" class="form-horizontal"
+				  th:action="@{/workflows/add}"
+				  th:object="${workflow}"
+				  method="post">
+				<fieldset>
+					<span class="pull-right">
+						    <input type="submit" id="submitButton" class="btn btn-success" th:value="Add">
+						    <input type="reset" id="resetButton" class="btn btn-danger" th:value="Reset"/>
+					</span>
+					<table class="table">
+						<thead>
+						<tr>
+							<th>Id</th>
+							<th>Employer</th>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Attributes</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td><input th:placeholder="Id" th:field="*{id}" required/></td>
+							<td><input th:placeholder="Employer" th:field="*{employer}" required/></td>
+							<td><input th:placeholder="Name" th:field="*{name}" required/></td>
+							<td><input th:placeholder="Description" th:field="*{description}" required/></td>
+							<td><input th:placeholder="Attributes" th:field="*{attributes}" required/></td>
+						</tr>
+						</tbody>
+					</table>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>

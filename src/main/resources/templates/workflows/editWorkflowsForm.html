@@ -1,0 +1,50 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Edit Forms</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1> Add Forms </h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<a class="btn btn-info" href="#" th:href="@{/workflows/all}"> Back to All Forms </a>
+			<form action="#" class="workflow-horizontal"
+				  th:action="@{/workflows/save}"
+				  method="post">
+				<fieldset>
+					<span class="pull-right">
+						    <input type="submit" id="submitButton" class="btn btn-success" th:value="Save">
+						    <input type="reset" id="resetButton" class="btn btn-danger" th:value="Reset"/>
+					</span>
+					<table class="table">
+						<thead>
+						<tr>
+							<th>Id</th>
+							<th>Employer</th>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Attributes</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr th:each="workflow, itemStat : ${workflows}">
+							<td><input th:name="|workflows[${itemStat.index}].id|" th:value="${workflow.getId()}" readonly/></td>
+							<td><input th:placeholder="Employer + ' ' + ${itemStat.count}" th:name="|workflows[${itemStat.index}].employer|" th:value="${workflow.getEmployer()}" required/></td>
+							<td><input th:placeholder="Name + ' ' + ${itemStat.count}" th:name="|workflows[${itemStat.index}].name|" th:value="${workflow.getName()}" required/></td>
+							<td><input th:placeholder="Description + ' ' + ${itemStat.count}" th:name="|workflows[${itemStat.index}].description|" th:value="${workflow.getDescription()}" required/></td>
+							<td><input th:placeholder="Attributes + ' ' + ${itemStat.count}" th:name="|workflows[${itemStat.index}].attributes|" th:value="${workflow.getAttributes()}" required/></td>
+						</tr>
+						</tbody>
+					</table>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>

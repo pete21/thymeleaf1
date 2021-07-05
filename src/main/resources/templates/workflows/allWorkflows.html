@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>All Workflows</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1> Forms </h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>employer</th>
+						<th>name</th>
+						<th>description</th>
+						<th>attributes</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${workflows.empty}">
+						<td colspan="2">No Workflows Available</td>
+					</tr>
+					<tr th:each="workflow : ${workflows}">
+						<td><span th:text="${workflow.id}">id</span></td>
+						<td><span th:text="${workflow.employer}">employer</span></td>
+						<td><span th:text="${workflow.name}">name</span></td>
+						<td><span th:text="${workflow.description}">description</span></td>
+						<td><span th:text="${workflow.attributes}">attributes</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-6">
+			<a class="btn btn-success" href="#" th:href="@{/workflows/create}"> Add Forms </a>
+			<a class="btn btn-primary" href="#" th:href="@{/workflows/edit}" th:classappend="${workflows.empty} ? 'disabled' : ''"> Edit Forms </a>
+		</div>
+	</div>
+</div>
+</body>
+</html>
